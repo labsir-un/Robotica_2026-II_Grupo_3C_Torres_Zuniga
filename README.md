@@ -46,7 +46,7 @@ Aquí se documentan los laboratorios, avances, resultados y la presentación de 
 - Organizar el desarrollo de los laboratorios del curso.
 - Documentar procedimientos, resultados y evidencias.
 - Presentar formalmente a los integrantes del equipo.
-- Mantener una estructura clara y ordenada para la evaluación.
+- Mantener una estructura clara y ordenada para la evaluació
 
 ---
 
