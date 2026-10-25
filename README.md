@@ -69,15 +69,15 @@ Soy un estudiante apasionado por la automatización y procesos practicos respect
 
 ### Integrante 2
 <div align="center">
-  <img src="./assets/integrantes/integrante2.jpg" alt="Foto integrante 2" style="border-radius: 50%; width: 180px;"><br>
+  <img src="https://github.com/user-attachments/assets/49deaab3-1f0d-4300-b94f-df0f9763327f" alt="integrante 2" width= "180"><br>
 </div>
 
-- **Nombre completo:** Nombre Apellido
+- **Nombre completo:** Daniel Alejandro Torres Sanabria
 - **Carrera:** Ingeniería Mecatrónica
-- **Correo institucional:** nombre@unal.edu.co
-- **Usuario de GitHub:** [usuariogithub](https://github.com/usuariogithub)
-- **Rol en el equipo:**  documentación, simulación, programacion, manipulacion 
-- **Intereses:** Modelado, programación, control
+- **Correo institucional:** datorressa@unal.edu.co
+- **Usuario de GitHub:** [DanielTorresS](https://github.com/DanielTorresS)
+- **Rol en el equipo:**  Diseño 3D, simulación, programación, manipulación 
+- **Intereses:** Modelado 3D, programación, Robótica móvil, visión artificial, automatización e idiomas
 - **Descripción breve:**  
-  Escribe aquí una breve presentación personal y académica del integrante.
+ Soy estudiante un apasionado por el modelado 3D, la programación y el desarrollo de sistemas robóticos. Me enfoco en la conexión de equipos de trabajo, optimización de procesos y en crear soluciones tecnológicas eficientes e innovadoras.
 
