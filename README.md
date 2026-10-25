@@ -11,8 +11,8 @@
 
 <h2>Profesores: <br>Pedro Fabián Cárdenas Herrera <br> Manuel Felipe Carranza Montenegro</h2>
 
-<h4>Janpier  Seabstian Zuñiga Ramos<br>
-    Nombre Integrante 2</h4>
+<h4>Janpier Sebastian Zuñiga Ramos<br>
+    Daniel Alejandro Torres Sanabria</h4>
 
 <p>
   <img alt="Ubuntu 24.04 LTS" src="https://img.shields.io/badge/Ubuntu-24.04%20LTS-E95420?logo=ubuntu&logoColor=white">
