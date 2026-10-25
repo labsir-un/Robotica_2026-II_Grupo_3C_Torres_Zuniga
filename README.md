@@ -76,8 +76,8 @@ Soy un estudiante apasionado por la automatización y procesos practicos respect
 - **Carrera:** Ingeniería Mecatrónica
 - **Correo institucional:** nombre@unal.edu.co
 - **Usuario de GitHub:** [usuariogithub](https://github.com/usuariogithub)
-- **Rol en el equipo:** Ej. Modelado, programación, control
-- **Intereses:** documentación, simulación, programacion, manipulacion
+- **Rol en el equipo:**  documentación, simulación, programacion, manipulacion 
+- **Intereses:** Modelado, programación, control
 - **Descripción breve:**  
   Escribe aquí una breve presentación personal y académica del integrante.
 
