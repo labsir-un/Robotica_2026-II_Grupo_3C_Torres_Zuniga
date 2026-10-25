@@ -91,10 +91,6 @@ Mark1 es un portamarcador que se atornilla al flange del IRB 140. Se diseñó en
   <img src="media/img/plano_mark1_ensamble.png" alt="Plano de ensamble de Mark1 con la lista de piezas" width="700px">
 </p>
 
-<p align="center">
-  <img src="media/img/herramienta_marcador.png" alt="Vistas del modelo CAD de Mark1" width="700px">
-</p>
-
 En los módulos de decoración la herramienta se declara como `tMarcador`, con los valores de Mark1 obtenidos en RobotStudio:
 
 ```rapid
