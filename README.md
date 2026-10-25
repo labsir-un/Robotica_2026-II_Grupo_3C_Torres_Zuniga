@@ -11,9 +11,8 @@
 
 <h2>Profesores: <br>Pedro Fabián Cárdenas Herrera <br> Manuel Felipe Carranza Montenegro</h2>
 
-<h4>Nombre Integrante 1<br>
-    Nombre Integrante 2<br>
-    Nombre Integrante 3</h4>
+<h4>Janpier  Seabstian Zuñiga Ramos<br>
+    Nombre Integrante 2</h4>
 
 <p>
   <img alt="Ubuntu 24.04 LTS" src="https://img.shields.io/badge/Ubuntu-24.04%20LTS-E95420?logo=ubuntu&logoColor=white">
@@ -46,7 +45,7 @@ Aquí se documentan los laboratorios, avances, resultados y la presentación de 
 - Organizar el desarrollo de los laboratorios del curso.
 - Documentar procedimientos, resultados y evidencias.
 - Presentar formalmente a los integrantes del equipo.
-- Mantener una estructura clara y ordenada para la evaluació
+- Mantener una estructura clara y ordenada para la evaluación.
 
 ---
 
@@ -54,17 +53,18 @@ Aquí se documentan los laboratorios, avances, resultados y la presentación de 
 
 ### Integrante 1
 <div align="center">
-  <img src="./assets/integrantes/integrante1.jpg" alt="Foto integrante 1" style="border-radius: 50%; width: 180px;"><br>
+  <img src="./assets/integrantes/integrante1.jpg" alt="<img width="2513" height="3289" alt="1061702939 (1)" src="https://github.com/user-attachments/assets/e4f0ede6-e826-4685-be25-55e05b414d4e" />
+" style="border-radius: 50%; width: 180px;"><br>
 </div>
 
-- **Nombre completo:** Nombre Apellido
+- **Nombre completo:** Janpier Sebastian Zuñiga Ramos 
 - **Carrera:** Ingeniería Mecatrónica
-- **Correo institucional:** nombre@unal.edu.co
-- **Usuario de GitHub:** [usuariogithub](https://github.com/usuariogithub)
-- **Rol en el equipo:** Ej. Integración ROS 2, documentación, simulación
+- **Correo institucional:** jzunigar@unal.edu.co
+- **Usuario de GitHub:** [jzunigar](https://github.com/jzunigar)
+- **Rol en el equipo:** documentación, simulación, programacion, revisador
 - **Intereses:** Robótica móvil, visión artificial, automatización
 - **Descripción breve:**  
-  Escribe aquí una breve presentación personal y académica del integrante.
+Soy un estudiante apasionado por la automatización y procesos practicos respecto a esto.
 
 ---
 
@@ -78,23 +78,7 @@ Aquí se documentan los laboratorios, avances, resultados y la presentación de 
 - **Correo institucional:** nombre@unal.edu.co
 - **Usuario de GitHub:** [usuariogithub](https://github.com/usuariogithub)
 - **Rol en el equipo:** Ej. Modelado, programación, control
-- **Intereses:** Manipulación, ROS 2, control de robots
-- **Descripción breve:**  
-  Escribe aquí una breve presentación personal y académica del integrante.
-
----
-
-### Integrante 3
-<div align="center">
-  <img src="./assets/integrantes/integrante3.jpg" alt="Foto integrante 3" style="border-radius: 50%; width: 180px;"><br>
-</div>
-
-- **Nombre completo:** Nombre Apellido
-- **Carrera:** Ingeniería Mecatrónica
-- **Correo institucional:** nombre@unal.edu.co
-- **Usuario de GitHub:** [usuariogithub](https://github.com/usuariogithub)
-- **Rol en el equipo:** Ej. Documentación, pruebas, simulación
-- **Intereses:** Robótica industrial, sistemas autónomos, IA
+- **Intereses:** documentación, simulación, programacion, manipulacion
 - **Descripción breve:**  
   Escribe aquí una breve presentación personal y académica del integrante.
 
