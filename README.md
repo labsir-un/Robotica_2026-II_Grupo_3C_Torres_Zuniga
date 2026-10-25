@@ -53,7 +53,7 @@ Aquí se documentan los laboratorios, avances, resultados y la presentación de 
 
 ### Integrante 1
 <div align="center">
-  <img src="./assets/integrantes/integrante1.jpg" alt="Integrante 1" width="180"><br>
+  <img src="https://github.com/user-attachments/assets/e4f0ede6-e826-4685-be25-55e05b414d4e" alt="Integrante 1" width="180"><br>
 </div>
 
 - **Nombre completo:** Janpier Sebastian Zuñiga Ramos 
