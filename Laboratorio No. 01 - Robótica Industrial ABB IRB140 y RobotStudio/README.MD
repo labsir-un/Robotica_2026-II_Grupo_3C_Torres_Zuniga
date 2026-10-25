@@ -50,6 +50,7 @@
 | [`rapid/calibracion/`](rapid/calibracion/) | Puntos y resultado de la calibración TCP de Mark1 |
 | [`robotstudio/`](robotstudio/) | Estaciones de RobotStudio (Pack and Go, `.rspag`) |
 | [`cad/Herramienta_marcador.sat`](cad/Herramienta_marcador.sat) | Modelo CAD de la herramienta Mark1 |
+| [`cad/Planos_actuador.pdf`](cad/Planos_actuador.pdf) | Planos de Mark1: ensamble, cuerpo, tapa, caña y brida |
 | [`media/`](media/) | Fotos, videos, diagrama de flujo y plano de planta |
 | [`guia/`](guia/) | Guía del laboratorio |
 
@@ -71,12 +72,24 @@ Las letras son de bloque y se trazan con `MoveL`; la cenefa y la flor son arcos 
 
 #### Herramienta Mark1
 
-Mark1 es un portamarcador que se atornilla al flange del IRB 140. Se diseñó en Autodesk Inventor y se fabricó por impresión 3D. El modelo está en [`cad/Herramienta_marcador.sat`](cad/Herramienta_marcador.sat) y se importó a RobotStudio para crear la herramienta.
+Mark1 es un portamarcador que se atornilla al flange del IRB 140. Se diseñó en Autodesk Inventor y se fabricó en PETG por impresión 3D; el ensamble pesa 65 g. El modelo está en [`cad/Herramienta_marcador.sat`](cad/Herramienta_marcador.sat) y se importó a RobotStudio para crear la herramienta. Los planos de fabricación están en [`cad/Planos_actuador.pdf`](cad/Planos_actuador.pdf) (cotas en mm, tolerancias de ±1 mm lineal y ±0.5° angular).
 
-- **Base circular** que se apoya en el flange, con los agujeros de los tornillos y el agujero central de centrado. Los varios tornillos evitan que la herramienta gire.
-- **Cuerpo** que sostiene el marcador inclinado 30° respecto al eje del flange. Así la muñeca no choca con el pastel y la punta y el trazo se ven en el video.
-- **Alojamiento del marcador** con sujeción a presión y un tope, para que la punta quede siempre a la misma distancia y no haya que recalibrar cada vez que se cambia el marcador.
+| Elemento | Pieza | Cant. | Descripción | Peso |
+|---|---|---|---|---|
+| 1 | Marcador | 1 | Expo dry eraser | — |
+| 2 | Cuerpo | 1 | Tubo de 115 mm que aloja el marcador, con rosca M24 × 2.5 en un extremo y el acople a la caña inclinado 30° | 29 g |
+| 3 | Tapa | 1 | Tapa roscada M24 × 2.5 (Ø28 × 12 mm) que cierra el cuerpo | 4 g |
+| 4 | Caña | 1 | Tubo de Ø20 × 70 mm (Ø15 interior) que une la brida con el cuerpo; su base tiene una lengüeta de 5 × 4 mm | 15 g |
+| 5 | Brida | 1 | Disco de Ø50 × 10 mm que se apoya en el flange, con los agujeros para M6 en un círculo de Ø40 y la ranura de la lengüeta de la caña | 16 g |
+| 6 | Tornillo M6 × 8 | 4 | Phillips de cabeza redonda, métrico ISO | — |
+
+- El **cuerpo** sostiene el marcador inclinado 30° respecto al eje del flange. Así la muñeca no choca con el pastel y la punta y el trazo se ven en el video.
+- Los tornillos y la lengüeta de la caña, que entra en la ranura de la brida, evitan que la herramienta gire.
 - Medidas generales del modelo: aprox. 50 × 127 × 81 mm.
+
+<p align="center">
+  <img src="media/img/plano_mark1_ensamble.png" alt="Plano de ensamble de Mark1 con la lista de piezas" width="700px">
+</p>
 
 <p align="center">
   <img src="media/img/herramienta_marcador.png" alt="Vistas del modelo CAD de Mark1" width="700px">
@@ -113,7 +126,6 @@ Todas las coordenadas están en mm respecto a la base del robot (`wobj0`).
 | Robot ABB IRB 140 | Origen (0, 0). Alcance máximo 810 mm |
 | Banda transportadora | Frente al robot, paralela al eje Y. Bidireccional (`FWD_Conveyor` / `BWD_Conveyor`) |
 | Pastel en la banda (`wobjTortaA`) | Origen (600, 10, 129) en el robot real (z = 180 en simulación); centro aprox. (500, 147.5); cuadrante x(+), y(+) |
-| Segunda superficie (`wobjTortaB`) | Origen (600, −285, 180) en simulación; centro aprox. (500, −147.5); cuadrante x(+), y(−) |
 | Controlador IRC5 + DSQC 652 | Lado x(−), fuera del área de trabajo |
 | Variador de la banda | Lado x(−), junto al controlador |
 
@@ -126,12 +138,10 @@ Todas las coordenadas están en mm respecto a la base del robot (`wobj0`).
 
 #### Workobjects
 
-Los dos workobjects están girados 90° en Z (`q = [0.707107, 0, 0, 0.707107]`), por eso el eje x del pastel queda en la dirección +Y del robot, que es la dirección de la banda. El punto `pPlano` es el centro del pastel, (137.5, 100, 0) dentro del workobject, y todas las trayectorias se definen relativas a él.
+El workobject del pastel, `wobjTortaA`, está girado 90° en Z (`q = [0.707107, 0, 0, 0.707107]`), por eso el eje x del pastel queda en la dirección +Y del robot, que es la dirección de la banda. El punto `pPlano` es el centro del pastel, (137.5, 100, 0) dentro del workobject, y todas las trayectorias se definen relativas a él.
 
 ```rapid
 TASK PERS wobjdata wobjTortaA := [FALSE, TRUE, "", [[600, 10, 180], [0.707107, 0, 0, 0.707107]],
-                                  [[0, 0, 0], [1, 0, 0, 0]]];
-TASK PERS wobjdata wobjTortaB := [FALSE, TRUE, "", [[600, -285, 180], [0.707107, 0, 0, 0.707107]],
                                   [[0, 0, 0], [1, 0, 0, 0]]];
 ```
 
@@ -160,7 +170,7 @@ Las trayectorias se guardan en tablas (arreglos `num`) con coordenadas relativas
 - `tblNombre1` (DANIEL TORRES, 181 puntos) y `tblNombre2` (SEBASTIAN ZUÑIGA, 235 puntos). Cada punto es `[x, y, estado]`: `0` marcador arriba, `2` bajar el marcador, `1` dibujando.
 - `tblCenefa` (28 arcos) y `tblFlor` (12 arcos), cada fila `[inicio, medio, fin]`.
 - `TrazarTabla` recorre los puntos con un `FOR` y, según el estado, hace `MoveL` a la altura segura o sobre el pastel. `TrazarArcos` recorre los arcos con `MoveC`.
-- Cada punto se calcula como `Offs(pPlano, x, y, z)`, así la misma rutina sirve para cualquier workobject: solo se cambia el `wobj` que se le pasa al procedimiento (`DecorarTorta wobjTortaA` o `DecorarTorta wobjTortaB`).
+- Cada punto se calcula como `Offs(pPlano, x, y, z)` dentro de `wobjTortaA` (`DecorarTorta wobjTortaA`), así que si el pastel cambia de lugar basta con redefinir el workobject.
 
 #### Organización del código
 
@@ -173,7 +183,7 @@ El programa de la celda completa ([`rapid/simulacion/decoracion_banda/`](rapid/s
 | [`MOD_Texto.mod`](rapid/simulacion/decoracion_banda/MOD_Texto.mod) | Tablas de puntos de los nombres, `TrazarTabla` y `TrazarNombres` |
 | [`MOD_Deco.mod`](rapid/simulacion/decoracion_banda/MOD_Deco.mod) | Tablas de arcos de la cenefa y la flor, `TrazarArcos` y `TrazarDecoracion` |
 | [`MOD_Estacion.mod`](rapid/simulacion/decoracion_banda/MOD_Estacion.mod) | Herramienta Mark1 y punto home creados en RobotStudio |
-| [`MOD_Main.mod`](rapid/simulacion/decoracion_banda/MOD_Main.mod) | `main` con el `WHILE` que revisa DI_01, DI_02 y DI_03, el ciclo de decoración, la segunda superficie, mantenimiento, Farmear Aura y funciones de apoyo |
+| [`MOD_Main.mod`](rapid/simulacion/decoracion_banda/MOD_Main.mod) | `main` con el `WHILE` que revisa DI_01, DI_02 y DI_03, el ciclo de decoración, mantenimiento, Farmear Aura y funciones de apoyo |
 
 Para el robot real se cargaron dos módulos autocontenidos ([`rapid/robot_real/`](rapid/robot_real/)):
 
@@ -250,14 +260,13 @@ Con la banda parada se activa DO_03. El robot hace un barrido de lado a lado tre
 | `Stop` | Detener el programa cuando falla un enclavamiento |
 | `TPErase` / `TPWrite` | Mostrar en el FlexPendant la etapa en la que va el programa |
 
-Tipos de dato usados: `tooldata` (`tMarcador`, Mark1), `wobjdata` (`wobjTortaA`, `wobjTortaB`), `robtarget` (`pPlano`, `Target_home`), `jointtarget` (`jHome`, `jMantto`, `jAura1` a `jAura4`), `speeddata` (`vTrazo`, `vAprox`, `vLento`, `vAura`), `num` (tablas, medidas y tiempos) y `bool` (`bRobotEnZona`, `bUsarSensor`, `bTimeout`).
+Tipos de dato usados: `tooldata` (`tMarcador`, Mark1), `wobjdata` (`wobjTortaA`), `robtarget` (`pPlano`, `Target_home`), `jointtarget` (`jHome`, `jMantto`, `jAura1` a `jAura4`), `speeddata` (`vTrazo`, `vAprox`, `vLento`, `vAura`), `num` (tablas, medidas y tiempos) y `bool` (`bRobotEnZona`, `bUsarSensor`, `bTimeout`).
 
 ### 3. Resultados
 
 **En RobotStudio** se simuló:
 
 - El ciclo completo con DI_01: la banda trae el pastel, se detiene, el robot decora con DO_01 activa, vuelve a HOME y la banda saca el pastel.
-- La decoración sobre la segunda superficie (`wobjTortaB`, cuadrante x(+), y(−)) con el mismo código, cambiando solo el workobject.
 - La pose de mantenimiento (DI_02 / DO_02) y la rutina Farmear Aura (DI_03 / DO_03).
 - El movimiento bidireccional de la banda con `DemoBidireccional`.
 
@@ -281,7 +290,7 @@ Tipos de dato usados: `tooldata` (`tMarcador`, Mark1), `wobjdata` (`wobjTortaA`,
 - **Calibración.** El método de 4 puntos solo calcula la posición del TCP y deja la orientación igual a la del flange, por eso en el robot real sale `[1, 0, 0, 0]` en lugar de los 30° en Y del modelo. Para obtener también el eje del marcador habría que usar el método TCP y Z.
 - La diferencia en z (unos 7 mm) se explica porque el marcador real no entra igual que en el modelo y la punta de fieltro no es un punto exacto. Las diferencias en x e y vienen de las tolerancias de la impresión 3D, de la holgura al montar Mark1 en el flange y del error al llevar la punta al mismo punto cuatro veces a mano. El modelo de RobotStudio supone un robot y una pieza perfectos; el real no.
 - En la prueba real se mantuvo `tMarcador` con los valores de Mark1 en RobotStudio y se ajustó la altura del workobject en la celda (z = 129 mm en lugar de 180 mm) hasta que el marcador tocara bien el pastel. Además, las velocidades de la decoración se bajaron a `v100`.
-- **Reutilización de trayectorias.** Como todas las trayectorias son relativas a `pPlano` dentro del workobject, la decoración en `wobjTortaB` salió igual que en `wobjTortaA` sin tocar las tablas. Si el pastel se mueve, basta con volver a definir el workobject.
+- **Reutilización de trayectorias.** Como todas las trayectorias son relativas a `pPlano` dentro de `wobjTortaA`, para pasar de la simulación al robot real solo hubo que cambiar la altura del workobject, sin tocar las tablas. Si el pastel se mueve, basta con volver a definir el workobject.
 - **Tipos de movimiento.** `MoveL` es adecuado para las letras de bloque, que son segmentos rectos, y `MoveC` permite trazar la cenefa y la flor con pocos puntos (un arco por fila de la tabla) en lugar de aproximar las curvas con muchos segmentos.
 - **Seguridad.** Los enclavamientos de la banda, la bandera `bRobotEnZona` y la regla de un solo DI activo garantizan que el robot no decore con la banda en movimiento y que la banda no arranque con el robot encima del pastel.
 
@@ -297,9 +306,9 @@ Tipos de dato usados: `tooldata` (`tMarcador`, Mark1), `wobjdata` (`wobjTortaA`,
 
 **Simulación en RobotStudio**
 
-| Pastel A (`wobjTortaA`, x+, y+) | Pastel B (`wobjTortaB`, x+, y−) |
-|---|---|
-| <img src="media/img/sim_pastel_A_wobjTortaA.png" alt="Decoración en wobjTortaA" width="400px"> | <img src="media/img/sim_pastel_B_wobjTortaB.png" alt="Decoración en wobjTortaB" width="400px"> |
+<p align="center">
+  <img src="media/img/sim_pastel_A_wobjTortaA.png" alt="Decoración simulada sobre el pastel en wobjTortaA" width="500px">
+</p>
 
 **Videos**
 
@@ -308,8 +317,8 @@ Tipos de dato usados: `tooldata` (`tMarcador`, Mark1), `wobjdata` (`wobjTortaA`,
 | [`real_decoracion.mp4`](media/videos/real_decoracion.mp4) | Robot real decorando el pastel |
 | [`real_farmear_aura.mp4`](media/videos/real_farmear_aura.mp4) | Robot real: rutina Farmear Aura con DO_03 |
 | [`Pastelito_banda_DI_01`](media/videos/Pastelito_banda_DI_01%2010-20.mp4) · [v2](media/videos/Pastelito_banda_DI_01_v2%2010-20.mp4) | Simulación del ciclo DI_01: banda, decoración con DO_01 y salida del pastel |
-| [`Pastelito_solo_decoracion`](media/videos/Pastelito_solo_decoracion%2010-20.mp4) · [v2](media/videos/Pastelito_solo_decoracion_v2%2010-20.mp4) | Simulación de la decoración sola |
-| [`Pastelito_farmear_aura`](media/videos/Pastelito_farmear_aura%2010-20.mp4) · [v2](media/videos/Pastelito_farmear_aura_v2%2010-20.mp4) | Simulación de Farmear Aura |
+| [`Pastelito_solo_decoracion`](media/videos/Pastelito_solo_decoracion_v2%2010-20.mp4) | Simulación de la decoración sola |
+| [`Pastelito_farmear_aura`](media/videos/Pastelito_farmear_aura_v2%2010-20.mp4) | Simulación de Farmear Aura |
 
 **Estaciones de RobotStudio** ([`robotstudio/`](robotstudio/))
 
@@ -322,7 +331,7 @@ Para abrirlas: RobotStudio > Archivo > Abrir > seleccionar el `.rspag` (*Unpack 
 
 ## ✅ Conclusiones
 
-- Guardar las trayectorias en tablas relativas al centro del pastel (`pPlano`) dentro de un workobject permitió reutilizar la misma decoración en los cuadrantes x(+), y(+) y x(+), y(−) cambiando solo el `wobjdata`, sin tocar ni un punto.
+- Guardar las trayectorias en tablas relativas al centro del pastel (`pPlano`) dentro de `wobjTortaA` permitió llevar la misma decoración de la simulación al robot real cambiando solo la altura del workobject, sin tocar ni un punto.
 - El TCP de RobotStudio y el calibrado en el robot real difieren 13.75 mm, por las tolerancias de la impresión 3D, el montaje en el flange y la punta del marcador. El modelo CAD sirve para simular, pero en el robot real hay que calibrar y ajustar en la celda; además, el método de 4 puntos no entrega la orientación de una herramienta inclinada como Mark1.
 - Los enclavamientos programados (nunca FWD y BWD a la vez, `bRobotEnZona`, un solo DI activo y la verificación con `CalcJointT`) aseguran que el robot y la banda no trabajen al mismo tiempo. Las salidas DO_01, DO_02 y DO_03 indican en todo momento en qué modo está el robot.
 - Combinar `MoveL` para las letras y `MoveC` para las curvas dio trazos continuos y limpios con pocos puntos, y la herramienta inclinada 30° evitó que la muñeca chocara con el pastel.
