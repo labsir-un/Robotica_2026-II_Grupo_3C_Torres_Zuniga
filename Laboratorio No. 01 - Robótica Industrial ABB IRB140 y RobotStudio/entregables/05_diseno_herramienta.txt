@@ -1,0 +1,31 @@
+DISEÑO DE LA HERRAMIENTA
+
+La herramienta es un portamarcador que se atornilla al flange del IRB 140.
+Se diseño en Autodesk Inventor y se fabrico por impresion 3D.
+
+Archivos CAD:
+cad/Herramienta_marcador.sat   modelo exportado de Inventor que se importo
+                               en RobotStudio para crear la herramienta Mark1.
+cad/Actuador_Robotica.sat      modelo del actuador completo.
+Vistas del modelo: media/img/herramienta_marcador.png
+
+Partes:
+- Base circular que se apoya en el flange, con los agujeros de los tornillos
+  y el agujero central de centrado.
+- Cuerpo que sostiene el marcador inclinado 30 grados respecto al eje del
+  flange. Asi el marcador queda separado de la muñeca y se ve la punta.
+- Alojamiento del marcador con sujecion a presion.
+
+Medidas generales del modelo: aprox. 50 x 127 x 81 mm.
+
+Por que se diseño asi:
+- La inclinacion de 30 grados evita que la muñeca choque con el pastel y deja
+  ver el trazo en el video.
+- La base con varios tornillos evita que la herramienta gire en el flange.
+- El marcador entra hasta un tope para que la punta quede siempre a la misma
+  distancia y no haya que recalibrar cada vez que se cambia.
+
+Datos de la herramienta en RAPID (tMarcador):
+tframe.trans = [22.659, -2.093, 127.403] mm
+tframe.rot   = [0.965925826, 0, 0.258819045, 0]   (30 grados en Y)
+masa = 0.25 kg, centro de gravedad [0, 0, 62] mm

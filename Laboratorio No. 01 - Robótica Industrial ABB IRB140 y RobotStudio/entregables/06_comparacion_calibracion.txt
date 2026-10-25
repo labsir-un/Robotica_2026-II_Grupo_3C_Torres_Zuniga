@@ -1,0 +1,41 @@
+COMPARACION DE LA CALIBRACION: ROBOTSTUDIO vs ROBOT REAL
+
+RobotStudio
+Se importo cad/Herramienta_marcador.sat, se puso el origen local en la cara
+que va al flange y con Create Tool se definio el TCP en la punta del marcador.
+Resultado (Mark1, rapid/simulacion/decoracion_banda/MOD_Estacion.mod):
+trans = [22.659, -2.093, 127.403]  rot = [0.965926, 0, 0.258819, 0]
+
+Robot real
+Se uso el metodo TCP de 4 puntos en el FlexPendant: se llevo la punta del
+marcador al mismo punto fijo con cuatro orientaciones diferentes del robot.
+Puntos usados: rapid/calibracion/TCP_Mark1.mod
+Resultado (rapid/calibracion/lapicigno.mod):
+trans = [33.787, 1.528, 120.176]  rot = [1, 0, 0, 0]
+
+Tabla
+
+Parametro      RobotStudio    Robot real    Diferencia
+-------------  -------------  ------------  ----------
+x [mm]         22.659         33.787        +11.13
+y [mm]         -2.093         1.528         +3.62
+z [mm]         127.403        120.176       -7.23
+distancia TCP                               13.76 mm
+orientacion    30 grados en Y sin rotacion  (ver abajo)
+
+Analisis
+- El metodo de 4 puntos solo calcula la posicion del TCP, la orientacion la
+  deja igual a la del flange. Por eso en el robot real sale [1, 0, 0, 0]. Para
+  sacar tambien el eje del marcador habria que usar TCP y Z.
+- La diferencia en z (unos 7 mm) se explica porque el marcador real no entra
+  igual que en el modelo y la punta de fieltro no es un punto exacto.
+- Las diferencias en x e y vienen de las tolerancias de la impresion 3D, de
+  la holgura al montar la pieza en el flange y del error al llevar la punta al
+  mismo punto cuatro veces a mano.
+- El modelo de RobotStudio supone un robot y una pieza perfectos, el real no.
+
+Conclusion
+El valor de RobotStudio sirve para simular y tener una idea de donde esta la
+punta, pero en el robot real hay que usar la herramienta calibrada en la
+celda. En la prueba real se ajusto la altura del workobject para que el
+marcador tocara bien el pastel.

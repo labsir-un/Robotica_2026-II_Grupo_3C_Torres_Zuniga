@@ -1,0 +1,30 @@
+CODIGO RAPID
+
+rapid/robot_real/                    modulos cargados en el robot real
+    MOD_SoloDecoracion.mod            nombres + cenefa + flor (v100,
+                                      wobjTortaA z = 129)
+    MOD_FarmearAura.mod               coreografia con DO_03 (v500)
+
+rapid/calibracion/                   puntos y resultado de la calibracion TCP
+    TCP_Mark1.mod                     los 4 puntos tomados en el FlexPendant
+    lapicigno.mod                     tooldata calculado
+
+rapid/simulacion/decoracion_banda/   programa completo de la celda (RobotStudio)
+    DecoracionBanda.pgf               archivo de programa
+    MOD_Datos.sys, MOD_Estacion.mod, MOD_Banda.mod, MOD_Texto.mod,
+    MOD_Deco.mod, MOD_Main.mod
+    EIO_Lab01.cfg                     señales para el controlador real
+    EIO_Lab01_Sim.cfg                 señales virtuales para RobotStudio
+
+rapid/simulacion/solo_decoracion/    solo la decoracion del pastel
+rapid/simulacion/farmear_aura/       solo la rutina Farmear Aura
+
+Estaciones de RobotStudio (Pack and Go): robotstudio/
+    Pastelito decoracion en banda transportadora movible.rspag
+    Pastelito solo decoracion.rspag
+    Pastelito farmear aura.rspag
+    pastelito.rspag
+
+Para abrirlas: RobotStudio > Archivo > Abrir > seleccionar el .rspag
+(Unpack and Work). Si el controlador no trae las señales, cargar
+EIO_Lab01_Sim.cfg y reiniciar.

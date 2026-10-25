@@ -1,0 +1,43 @@
+EVIDENCIA DE LAS SEÑALES DIGITALES
+
+Señal          Funcion                                   Donde se ve
+-------------  ----------------------------------------  ------------------------------
+DI_01          inicia el ciclo de decoracion             simulacion con banda (video)
+DI_02          lleva el robot a mantenimiento            simulacion (I/O Simulator)
+DI_03          inicia Farmear Aura                       real_farmear_aura.mp4 y sim.
+DO_01          activa mientras el robot decora           simulacion con banda (video)
+DO_02          activa en la pose de mantenimiento        simulacion (I/O Simulator)
+DO_03          activa durante Farmear Aura               real_farmear_aura.mp4 y sim.
+FWD_Conveyor   banda hacia adelante                      simulacion con banda (video)
+BWD_Conveyor   banda hacia atras                         DemoBidireccional en sim.
+
+Simulaciones en RobotStudio (robotstudio/), todas con la banda al frente del
+robot:
+- Pastelito solo decoracion.rspag: solo la decoracion del pastel.
+- Pastelito decoracion en banda transportadora movible.rspag: ciclo con las
+  entradas digitales, la banda trae el pastel, el robot decora y la banda lo
+  saca.
+- Pastelito farmear aura.rspag: rutina Farmear Aura.
+
+Mapeo en el DSQC 652:
+DI_01 = 0, DI_02 = 1, DI_03 = 2, DI_Sensor = 3
+DO_01 = 0, DO_02 = 1, DO_03 = 2, FWD_Conveyor = 3, BWD_Conveyor = 4
+
+Banda bidireccional
+FWD = 1, BWD = 0   adelante
+FWD = 0, BWD = 1   atras
+FWD = 0, BWD = 0   detenida
+FWD = 1, BWD = 1   prohibido. Antes de activar un sentido se resetea el otro,
+                   se espera 0.3 s y se revisa con DOutput. Si la otra señal
+                   sigue activa el programa se detiene.
+
+El procedimiento DemoBidireccional (MOD_Banda) mueve la banda 3 s adelante,
+la para, 3 s atras y la para, para mostrar los dos sentidos.
+
+Fotos y videos del robot real: media/fotos y media/videos
+- pastel_decorado_real.jpeg   resultado de la decoracion en el robot real
+- real_decoracion.mp4         robot decorando el pastel
+- real_farmear_aura.mp4       rutina Farmear Aura
+
+Pendiente: video del ciclo completo en el robot real (banda llevando el pastel
+y robot decorando).
