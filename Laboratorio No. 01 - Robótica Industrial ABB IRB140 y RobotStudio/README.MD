@@ -292,7 +292,7 @@ Tipos de dato usados: `tooldata` (`tMarcador`, Mark1), `wobjdata` (`wobjTortaA`)
 
 ## 📷 Evidencias
 
-**Video de la práctica (canal oficial LabSIR):** *pendiente, lo agrega el monitor al publicarlo.*
+**Video de la práctica (canal oficial LabSIR):** https://youtu.be/est3KcihayQ
 
 **Resultado en el robot real**
 
