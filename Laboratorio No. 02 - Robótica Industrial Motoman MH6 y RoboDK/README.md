@@ -186,7 +186,7 @@ $$
 </p>
 
 - El polo es el origen de `Frame_from_Target1`; para cada θ se calcula $r(\theta)$ y se envía el punto $(r\cos\theta,\ r\sin\theta)$. La curva es cerrada y se dibuja de un solo trazo.
-- Con θ uniforme los picos quedan mal muestreados, así que los ángulos se toman como $\theta_i = \operatorname{atan2}(\sin^3 u_i, \cos^3 u_i)$ con $u_i$ uniforme. Con **81 puntos** el error máximo frente a la curva es 0.08 mm (0.65 mm con θ uniforme), y como 81 − 1 es múltiplo de 4, los cuatro picos caen en puntos de la lista.
+- Con θ uniforme los picos quedan mal muestreados, así que los ángulos se toman como $\theta_i = \mathrm{atan2}(\sin^3 u_i, \cos^3 u_i)$ con $u_i$ uniforme. Con **81 puntos** el error máximo frente a la curva es 0.08 mm (0.65 mm con θ uniforme), y como 81 − 1 es múltiplo de 4, los cuatro picos caen en puntos de la lista.
 - Debajo del astroide se escriben **SEBASTIÁN ZÚÑIGA** y **DANIEL TORRES** con una fuente de trazo propia (letras de 9 mm sobre una rejilla de 4 × 6), levantando el marcador 10 mm entre trazos.
 
 | Parámetro | Valor |
