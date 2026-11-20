@@ -107,7 +107,7 @@ El pendant muestra estas posiciones en pulsos de encoder de cada eje; un valor c
 - **Home1** es la pose **recogida**: base al frente, brazo inferior L inclinado hacia atrás, brazo superior U plegado sobre él y muñeca doblada (B lejos de 0). Se lleva el robot con `[ROBOT]` → *Work Home Position* → `[FWD]` sostenido con el interruptor de habilitación.
 - **Home2** es la pose **levantada**, casi en el cero mecánico: L vertical, U horizontal hacia adelante y muñeca estirada (B ≈ 0). El DX100 la usa para verificar la posición tras una alarma o un corte de energía: en *Second Home Pos* compara lo guardado contra lo actual (columna *Difference*, 0 en los seis ejes en la foto).
 
-**¿Cuál es mejor?** Para trabajar, **home1**. En home2 B está prácticamente en 0 y los ejes R y T quedan alineados: es la singularidad de muñeca, y un movimiento cartesiano que arranque desde ahí puede hacer girar R y T muy rápido o detener el robot por alarma. Además, en home2 la brida queda alta y adelantada sobre la zona de trabajo, mientras que en home1 el brazo está recogido sobre la base y libera el espacio. Home2 sirve para lo que fue pensada: comprobar la posición de los encoders.
+**¿Cuál es mejor?** Para trabajar, **home2**. Con el brazo levantado y la brida adelantada, el robot queda sobre la zona de trabajo y llega al tablero con movimientos cortos. Home1 no sirve como punto de partida: con el brazo plegado sobre la base hay que desplegar L y U por completo antes de alcanzar cualquier punto útil. Su uso es el **apagado**: es la pose en la que se deja el robot al terminar, compacta y con el brazo recogido para evitar desgaste. Como en home2 la muñeca está casi estirada (B ≈ 0, cerca de la singularidad de muñeca), conviene salir de ella con un movimiento articular (`MoveJ`) y no con uno cartesiano.
 
 #### Movimiento manual
 
@@ -273,7 +273,7 @@ También se llevó el robot de home1 a home2 desde el pendant y se registraron l
 
 ### 4. Análisis
 
-- **Home1 vs. home2.** Que home2 esté casi en el cero mecánico la hace útil como referencia de verificación, pero inconveniente como punto de partida por la singularidad de muñeca. Home1, recogida y con la muñeca doblada, es la pose segura para empezar y terminar.
+- **Home1 vs. home2.** Home2, levantada y casi en el cero mecánico, deja el robot listo sobre la zona de trabajo y además sirve de referencia para verificar los encoders. Home1, recogida, es la pose de apagado: protege el robot cuando no se usa, pero desde ahí no se puede trabajar.
 - **Número de puntos.** El compromiso es entre una curva poligonal y saturar el buffer del DX100. Repartir los puntos según el parámetro natural del astroide concentra la resolución en los picos: con 81 puntos se logra un error menor que con 161 repartidos uniformemente en θ.
 - **Envío punto a punto.** Mandar cada `MoveL` solo cuando el anterior terminó evita llenar el buffer del controlador y permite reanudar la trayectoria desde el punto exacto si el robot se detiene.
 - **Simulación vs. robot real.** RoboDK verifica geometría y alcanzabilidad, pero no corre el software del DX100: el comportamiento real (aproximación entre puntos, tiempos y alarmas) solo se comprueba en el robot, y por eso la primera prueba se hizo sin contacto.
@@ -299,7 +299,7 @@ También se llevó el robot de home1 a home2 desde el pendant y se registraron l
 ## ✅ Conclusiones
 
 - El MH6 y el IRB 140 cargan lo mismo, pero el MH6 tiene casi el doble de alcance y el IRB 140 es más preciso; la diferencia más grande al trabajar con ellos está en el ecosistema: INFORM y el pendant del DX100 frente a RAPID y RobotStudio.
-- Home1 es la mejor posición para trabajar porque está fuera de la singularidad de muñeca y deja libre el espacio de trabajo; home2 sirve para verificar la posición de los encoders.
+- Home2 es la posición de trabajo, porque deja el robot sobre la zona de trabajo; home1 es la posición de apagado, recogida para evitar desgaste, y no sirve para trabajar desde ahí.
 - Definir la figura en polares y muestrearla según su parámetro natural permitió dibujar el astroide con 81 puntos y un error de 0.08 mm, sin saturar el buffer del DX100.
 - RoboDK permitió programar, simular y ejecutar la trayectoria en el MH6 desde Python sin escribir INFORM, con envío punto a punto que hace posible reanudar si el robot se detiene.
 
