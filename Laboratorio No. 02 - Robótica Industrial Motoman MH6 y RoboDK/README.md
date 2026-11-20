@@ -281,7 +281,7 @@ También se llevó el robot de home1 a home2 desde el pendant y se registraron l
 
 ## 📷 Evidencias
 
-**Video de la práctica (canal oficial LabSIR):** *(pendiente)*
+**Video de la práctica (canal oficial LabSIR):** https://youtu.be/mpTBdZYE0KI
 
 **Simulación en RoboDK**
 
