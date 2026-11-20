@@ -10,8 +10,8 @@ Profesor de laboratorio: Manuel Felipe Carranza Montenegro
 | **Integrantes** | Daniel Torres · Sebastián Zúñiga |
 | **Robot** | Yaskawa Motoman MH6 (6 GDL, alcance 1422 mm, carga 6 kg) |
 | **Controlador** | Yaskawa DX100 |
-| **Software** | RoboDK + API de Python |
-| **Entrega** | Según la actividad en Moodle |
+| **Software** | RoboDK |
+| **Entrega** | 20 de noviembre de 2026 |
 | **Vídeo** | *(pendiente: enlace del canal oficial LabSIR)* |
 
 ---
